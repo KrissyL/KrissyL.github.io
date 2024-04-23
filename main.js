@@ -258,14 +258,24 @@ const quizData = [
     
       quiz.appendChild(resultsContainer);    
   }
-  
+ 
+  function printResults() {
+    const printButton = document.createElement("button");
+    printButton.id = "print";
+    printButton.innerText = "Print";
+    printButton.addEventListener("click", (() => window.print()) );
+    document.body.appendChild(printButton);
+  }
+    
   function showResult() {
     quiz.innerHTML = `
       <h1>Quiz Completed!</h1>
       <p>Your score: ${totalScore}/${quizData.length}</p>
       <h1>Results Breakdown</h1>
     `;
+    printResults();
     getTags();
   }
-  
+
+
   showQuestion();
